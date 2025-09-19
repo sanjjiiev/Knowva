@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +69,29 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=======
+This project is a Personalized Learning Management System (PLMS) powered by CrewAI agents and LangGraph.
+It provides an AI-driven interface for students to interact with study material through text, documents, and voice.
+
+Features
+
+Basic chat interface
+
+AI-generated explanations
+
+AI-curated practice problems
+
+AI-powered revision support
+
+Integration of external resources
+
+RAG (Retrieval Augmented Generation) with search tools to fetch learning material online
+
+Support for multiple input types:
+
+Text input
+
+Document input (PDF/DOCX) → auto text extraction
+
+Voice input → converted to text via speech-to-text
+>>>>>>> 507ff58f9ec25f56263fa9f2756095cc5d359743
