@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React, { useState } from "react";
+import Auth from "./pages/Auth";
+import Dashboard from "./pages/Dashboard";
 
-function App() {
+export default function App() {
+  const [user, setUser] = useState(null);
+  const [isLogin, setIsLogin] = useState(true);
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {!user ? (
+        <Auth onLogin={setUser} isLogin={isLogin} setIsLogin={setIsLogin} />
+      ) : (
+        <Dashboard user={user} onLogout={() => setUser(null)} />
+      )}
+    </>
   );
 }
-
-export default App;
