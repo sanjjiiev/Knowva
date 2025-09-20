@@ -1,9 +1,9 @@
 ```
-npm install
+cd app
 ```
 
 ```
-cd app
+npm install
 ```
 
 ```
