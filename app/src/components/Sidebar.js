@@ -3,7 +3,8 @@
 import React, { useState } from 'react';
 import '@fortawesome/fontawesome-free/css/all.css';
 
-function Sidebar() {
+function ChatToggle() {
+  const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     { sender: 'bot', text: 'Hello 👋! How can I help you today?' }
   ]);
@@ -22,34 +23,45 @@ function Sidebar() {
   };
 
   return (
-    <aside className="sidebar chat-sidebar">
-      <div className="chat-header">
-        <i className="fas fa-robot"></i>
-        <span>AI Assistant</span>
-      </div>
+    <>
+      {/* Floating Toggle Button */}
+      <button
+        className={`chat-toggle-btn ${isOpen ? 'open' : ''}`}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <i className={`fas ${isOpen ? 'fa-times' : 'fa-robot'}`}></i>
+      </button>
 
-      <div className="chat-window">
-        {messages.map((msg, idx) => (
-          <div key={idx} className={`chat-message ${msg.sender}`}>
-            {msg.text}
-          </div>
-        ))}
-      </div>
+      {/* Chat Sidebar */}
+      <aside className={`chat-sidebar ${isOpen ? 'active' : ''}`}>
+        <div className="chat-header">
+          <i className="fas fa-robot"></i>
+          <span>AI Assistant</span>
+        </div>
 
-      <div className="chat-input">
-        <input
-          type="text"
-          placeholder="Type a message..."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-        />
-        <button onClick={handleSend}>
-          <i className="fas fa-paper-plane"></i>
-        </button>
-      </div>
-    </aside>
+        <div className="chat-window">
+          {messages.map((msg, idx) => (
+            <div key={idx} className={`chat-message ${msg.sender}`}>
+              {msg.text}
+            </div>
+          ))}
+        </div>
+
+        <div className="chat-input">
+          <input
+            type="text"
+            placeholder="Type a message..."
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+          />
+          <button onClick={handleSend}>
+            <i className="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </aside>
+    </>
   );
 }
 
-export default Sidebar;
+export default ChatToggle;

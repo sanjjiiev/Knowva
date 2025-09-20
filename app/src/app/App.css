@@ -855,3 +855,52 @@ body {
 .chat-input button:hover {
     opacity: 0.8;
 }
+
+/* Floating Toggle Button */
+.chat-toggle-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    border: none;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transition: background 0.3s, transform 0.3s;
+}
+
+.chat-toggle-btn:hover {
+    background: #7c6ae6;
+    transform: scale(1.05);
+}
+
+.chat-toggle-btn.open {
+    background: var(--accent-red);
+}
+
+/* Slide-in Chat Sidebar */
+.chat-sidebar {
+    position: fixed;
+    right: -350px;
+    bottom: 0;
+    width: 350px;
+    height: 100%;
+    background-color: var(--sidebar-bg);
+    border-left: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    transition: right 0.4s ease;
+    z-index: 999;
+}
+
+.chat-sidebar.active {
+    right: 0;
+}
