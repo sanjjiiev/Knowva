@@ -1,19 +1,55 @@
-// pages/index.js
-import Head from 'next/head';
+'use client';
+
+import { useState, useEffect, useRef } from 'react';
 import styles from './styles/home.module.css';
 
 export default function Home() {
+  const [messages, setMessages] = useState([
+    { id: 1, text: 'Welcome to ChatApp!', sender: 'bot' }
+  ]);
+  const [inputValue, setInputValue] = useState('');
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
+  const handleSend = () => {
+    if (!inputValue.trim()) return;
+
+    const newMessage = {
+      id: Date.now(),
+      text: inputValue,
+      sender: 'user',
+    };
+
+    setMessages((prev) => [...prev, newMessage]);
+    setInputValue('');
+
+    // Bot reply after 1 second
+    setTimeout(() => {
+      const botReply = {
+        id: Date.now() + 1,
+        text: "Thanks for your message! This is an automated reply.",
+        sender: 'bot',
+      };
+      setMessages((prev) => [...prev, botReply]);
+    }, 1000);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleSend();
+    }
+  };
+
   return (
     <div className={styles.container}>
-      {/* <Head>
-        <title>Stitch Design</title>
-        <meta name="description" content="ChatApp interface" />
-        <link rel="icon" href="data:image/x-icon;base64," />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
-      </Head> */}
-
       <div className={styles.appContainer}>
         <aside className={styles.sidebar}>
           <div className={styles.sidebarHeader}>
@@ -65,9 +101,44 @@ export default function Home() {
 
           <div className={styles.content}>
             <div className={styles.chatContainer}>
-              <div className={styles.welcomeSection}>
-                <h2 className={styles.welcomeTitle}>Welcome to ChatApp</h2>
-                <p className={styles.welcomeSubtitle}>Start a new conversation or pick up where you left off.</p>
+              <div style={{ flex: 1, overflowY: 'auto', paddingBottom: '1rem', display: 'flex', flexDirection: 'column' }}>
+                {messages.filter(m => m.sender === 'user').length === 0 ? (
+                  <div className={styles.welcomeSection}>
+                    <div>
+                      <div className={styles.welcomeTitle}>Welcome to ChatApp!</div>
+                      <div className={styles.welcomeSubtitle}>Start a conversation by sending a message.</div>
+                    </div>
+                  </div>
+                ) : (
+                  messages
+                    .filter(m => !(m.sender === 'bot' && m.text === 'Welcome to ChatApp!'))
+                    .map(({ id, text, sender }) => (
+                      <div
+                        key={id}
+                        style={{
+                          display: 'flex',
+                          justifyContent: sender === 'user' ? 'flex-end' : 'flex-start',
+                          marginBottom: '0.5rem',
+                        }}
+                      >
+                        <div
+                          style={{
+                            maxWidth: '70%',
+                            padding: '0.75rem 1rem',
+                            borderRadius: '1rem',
+                            backgroundColor: sender === 'user' ? '#197fe6' : '#f1f3f5',
+                            color: sender === 'user' ? 'white' : '#212529',
+                            fontWeight: 500,
+                            boxShadow:
+                              sender === 'user' ? '0 2px 8px rgba(25, 127, 230, 0.4)' : 'none',
+                          }}
+                        >
+                          {text}
+                        </div>
+                      </div>
+                    ))
+                )}
+                <div ref={messagesEndRef} />
               </div>
 
               <div className={styles.inputContainer}>
@@ -75,9 +146,18 @@ export default function Home() {
                   className={styles.messageInput}
                   placeholder="Send a message..."
                   type="text"
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  onKeyDown={handleKeyDown}
                 />
-                <button className={styles.sendButton}>
-                  <svg fill="currentColor" height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg">
+                <button className={styles.sendButton} onClick={handleSend} aria-label="Send message">
+                  <svg
+                    fill="currentColor"
+                    height="20"
+                    viewBox="0 0 256 256"
+                    width="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
                     <path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,60.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path>
                   </svg>
                 </button>
