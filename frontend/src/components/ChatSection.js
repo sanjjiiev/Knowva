@@ -1,6 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
 
-const ChatSection = ({ messages, onSendMessage }) => {
+const ChatSection = () => {
+  const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef(null);
@@ -21,17 +23,44 @@ const ChatSection = ({ messages, onSendMessage }) => {
     scrollToBottom();
   }, [messages]);
 
-  const handleSend = () => {
-    if (inputValue.trim()) {
-      setIsTyping(true);
-      onSendMessage(inputValue);
-      setInputValue('');
+  const handleSendMessage = (message, type = "user") => {
+    setMessages(prev => [
+      ...prev,
+      { id: Date.now() + Math.random(), message, type, timestamp: Date.now() }
+    ]);
+  };
 
-      // Hide typing indicator after simulated response time
-      setTimeout(() => {
-        setIsTyping(false);
-      }, 1500);
+  const fetchAIResponse = async (message) => {
+    try {
+      setIsTyping(true);
+
+      const response = await fetch("http://localhost:5000/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message })
+      });
+
+      const data = await response.json();
+
+      // Add AI responses
+      handleSendMessage(`Explanation:\n${data.explanation}`, "ai");
+      handleSendMessage(`Practice Questions:\n${data.practice}`, "ai");
+      handleSendMessage(`Revision:\n${data.revision}`, "ai");
+
+    } catch (error) {
+      console.error(error);
+      handleSendMessage("Error fetching AI response", "ai");
+    } finally {
+      setIsTyping(false);
     }
+  };
+
+  const handleSend = () => {
+    if (!inputValue.trim()) return;
+
+    handleSendMessage(inputValue, "user");
+    fetchAIResponse(inputValue);
+    setInputValue('');
   };
 
   const handleKeyPress = (e) => {
@@ -43,23 +72,16 @@ const ChatSection = ({ messages, onSendMessage }) => {
 
   const handleQuickReply = (reply) => {
     setInputValue(reply);
-    setIsTyping(true);
-    onSendMessage(reply);
-
-    setTimeout(() => {
-      setIsTyping(false);
-    }, 1500);
+    handleSendMessage(reply, "user");
+    fetchAIResponse(reply);
   };
 
   const formatTime = (timestamp) => {
     const date = new Date(timestamp);
-    return date.toLocaleTimeString('en-US', { 
-      hour: '2-digit', 
-      minute: '2-digit' 
-    });
+    return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
   };
 
-  return (
+ return (
     <div className="card">
       <div className="chat-container">
         <div className="chat-header">
@@ -71,11 +93,13 @@ const ChatSection = ({ messages, onSendMessage }) => {
           {messages.map(msg => (
             <div key={msg.id} className={`message message--${msg.type}`}>
               <div className="message-content">
-                {msg.message}
+                {msg.type === 'ai' ? (
+                  <ReactMarkdown>{msg.message}</ReactMarkdown>
+                ) : (
+                  msg.message
+                )}
               </div>
-              <div className="message-time">
-                {formatTime(msg.timestamp)}
-              </div>
+              <div className="message-time">{formatTime(msg.timestamp)}</div>
             </div>
           ))}
 
