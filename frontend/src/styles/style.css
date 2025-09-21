@@ -621,6 +621,19 @@ textarea.form-control {
   padding: var(--space-24) 0;
 }
 
+.search-section .container {
+  display: flex;
+  gap: var(--space-12);
+  width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-bar {
+  display: flex;
+  gap: var(--space-12);
+}
+
 .search-bar {
   display: flex;
   gap: var(--space-12);
