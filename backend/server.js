@@ -5,30 +5,28 @@ const { ChatOpenAI } = require("@langchain/openai");
 const { SystemMessage } = require("@langchain/core/messages");
 const { RunnableSequence } = require("@langchain/core/runnables");
 
-require('dotenv').config();
+require("dotenv").config();
 
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-
-// ⚠️ Make sure you set your OpenAI API key in environment variables
+// OpenAI model
 const model = new ChatOpenAI({
   apiKey: process.env.OPENAI_API_KEY,
   modelName: "gpt-4o-mini",
   temperature: 0.5,
 });
 
-// Helper function to wrap RunnableSequence to return plain string
-const runChain = async (chain, topic) => {
-  const result = await chain.invoke({ topic });
-  // RunnableSequence might return SystemMessage object, so extract content if exists
+// Helper function
+const runChain = async (chain, input) => {
+  const result = await chain.invoke(input);
   if (typeof result === "string") return result;
   if (result?.content) return result.content;
   return String(result);
 };
 
-// Define the chains for each task
+// ===================== CHATBOX ENDPOINT =====================
 const explanationChain = RunnableSequence.from([
   (input) => new SystemMessage(`Explain this topic in simple terms: ${input.topic}`),
   (input) => model.invoke([input]),
@@ -44,7 +42,6 @@ const revisionChain = RunnableSequence.from([
   (input) => model.invoke([input]),
 ]);
 
-// Main API endpoint
 app.post("/chat", async (req, res) => {
   const { message } = req.body;
 
@@ -53,11 +50,10 @@ app.post("/chat", async (req, res) => {
   }
 
   try {
-    // Run all three chains in parallel
     const [explanationResult, practiceResult, revisionResult] = await Promise.all([
-      runChain(explanationChain, message),
-      runChain(practiceChain, message),
-      runChain(revisionChain, message),
+      runChain(explanationChain, { topic: message }),
+      runChain(practiceChain, { topic: message }),
+      runChain(revisionChain, { topic: message }),
     ]);
 
     res.json({
@@ -70,6 +66,56 @@ app.post("/chat", async (req, res) => {
     res.status(500).json({ error: "Something went wrong" });
   }
 });
+
+// ===================== SEARCH ENDPOINT =====================
+const searchChain = RunnableSequence.from([
+  (input) =>
+    new SystemMessage(
+      `You are an assistant that simulates web search results. 
+      User query: "${input.query}".
+      Return a JSON array of 5 items with these fields:
+      {
+        "title": "Title of result",
+        "url": "URL link",
+        "source": "Google" or "YouTube",
+        "snippet": "Short description (2-3 lines)"
+      }.
+      Only return valid JSON.`
+    ),
+  (input) => model.invoke([input]),
+]);
+
+app.post("/search", async (req, res) => {
+  const { query } = req.body;
+
+  if (!query || !query.trim()) {
+    return res.status(400).json({ error: "Query is required" });
+  }
+
+  try {
+    let resultsStr = await runChain(searchChain, { query });
+
+    // Remove code fences or extra markdown
+    resultsStr = resultsStr
+      .replace(/```json/g, "")
+      .replace(/```/g, "")
+      .trim();
+
+    let results = [];
+    try {
+      results = JSON.parse(resultsStr);
+    } catch (err) {
+      console.warn("Failed to parse AI search response:", err);
+      results = [];
+    }
+
+    res.json({ results });
+  } catch (error) {
+    console.error("Error in /search:", error);
+    res.status(500).json({ error: "Something went wrong" });
+  }
+});
+
 
 app.listen(5000, () => {
   console.log("AI server running on http://localhost:5000");
