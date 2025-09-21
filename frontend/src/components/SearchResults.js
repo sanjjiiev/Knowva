@@ -14,7 +14,7 @@ const SearchResults = ({ query, results, onBackToHome }) => {
 
       {results.length === 0 ? (
         <div className="card p-8 text-center">
-          <h3>No results found</h3>
+          <h3>Searching.....</h3>
         </div>
       ) : (
         results.map((r, i) => (
