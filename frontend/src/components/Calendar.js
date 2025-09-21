@@ -67,7 +67,7 @@ const Calendar = ({ currentMonth, onNavigateMonth, tasks, selectedDate, onSelect
             <div
               key={`${weekIndex}-${dayIndex}`}
               className={`calendar-day ${!dayData.isCurrentMonth ? 'other-month' : ''} ${dayData.isToday ? 'today' : ''} ${dayData.isSelected ? 'selected' : ''} ${dayData.hasTasks ? 'has-tasks' : ''}`}
-              onClick={() => onSelectDate(dayData.date)}
+              // onClick={() => onSelectDate(dayData.date)}
               title={dayData.hasTasks ? `${dayData.tasks.length} task${dayData.tasks.length > 1 ? 's' : ''}` : ''}
             >
               <span className="day-number">{dayData.day}</span>
