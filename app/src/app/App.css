@@ -1019,3 +1019,303 @@ body {
 .fullscreen-btn:hover {
     color: var(--primary-color);
 }
+
+/* Activities Card */
+.activities-card {
+  display: flex;
+  flex-direction: column;
+  height: 400px; /* Fixed height for scrolling */
+  position: relative;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+/* Year selector styles */
+.year-selector {
+  position: relative;
+}
+
+.year-dropdown-toggle {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.year-dropdown-toggle:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.year-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  margin-top: 5px;
+  z-index: 10;
+  min-width: 100px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.year-option {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  font-size: 14px;
+}
+
+.year-option:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.year-option.selected {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Contributions info */
+.contributions-info {
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: var(--light-text-color);
+}
+
+.contributions-count {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+/* Entire activities content with scrolling */
+.activities-scroll-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+/* Heatmap wrapper */
+.heatmap-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+/* Month labels row */
+.month-labels-row {
+  display: flex;
+  margin-bottom: 5px;
+  height: 20px;
+}
+
+.day-label-spacer {
+  width: 40px;
+  flex-shrink: 0;
+}
+
+.month-labels-scroll-container {
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+.month-labels {
+  display: flex;
+  height: 100%;
+}
+
+.month-label-cell {
+  width: 14px;
+  height: 100%;
+  font-size: 11px;
+  color: var(--light-text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-right: 3px;
+}
+
+/* Main heatmap container */
+.heatmap-content-container {
+  display: flex;
+  flex-grow: 1;
+  min-height: 0; /* Important for flexbox scrolling */
+}
+
+/* Fixed day labels */
+.day-labels-column {
+  width: 40px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.day-label {
+  height: 14px;
+  font-size: 11px;
+  color: var(--light-text-color);
+  text-align: right;
+  padding-right: 5px;
+  margin-bottom: 3px;
+  line-height: 14px;
+}
+
+/* Scrollable grid */
+.heatmap-grid-scrollable {
+  overflow-x: auto;
+  flex-grow: 1;
+}
+
+.heatmap-grid {
+  display: flex;
+  height: 100%;
+  padding-bottom: 10px; /* Space for scrollbar */
+}
+
+.week-column {
+  display: flex;
+  flex-direction: column;
+  margin-right: 3px;
+}
+
+.heatmap-cell {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  background-color: rgba(255, 255, 255, 0.1);
+  margin-bottom: 3px;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.heatmap-cell:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.3);
+  z-index: 1;
+}
+
+.heatmap-cell[data-level="0"] {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.heatmap-cell[data-level="1"] {
+  background-color: rgba(106, 90, 205, 0.4); /* Slate blue with opacity */
+}
+
+.heatmap-cell[data-level="2"] {
+  background-color: rgba(106, 90, 205, 0.6);
+}
+
+.heatmap-cell[data-level="3"] {
+  background-color: rgba(106, 90, 205, 0.8);
+}
+
+.heatmap-cell[data-level="4"] {
+  background-color: rgba(106, 90, 205, 1); /* Primary color */
+}
+
+.empty-cell {
+  background-color: transparent !important;
+  cursor: default;
+}
+
+.empty-cell:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Footer with Less/More scale */
+.chart-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 15px;
+  border-top: 1px solid var(--border-color);
+}
+
+.contribution-info-link a {
+  font-size: 12px;
+  color: var(--light-text-color);
+  text-decoration: none;
+}
+
+.contribution-info-link a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.intensity-scale {
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  color: var(--light-text-color);
+}
+
+.intensity-levels {
+  display: flex;
+  margin: 0 5px;
+  gap: 2px;
+}
+
+.intensity-level {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.intensity-level[data-level="0"] {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.intensity-level[data-level="1"] {
+  background-color: rgba(106, 90, 205, 0.4);
+}
+
+.intensity-level[data-level="2"] {
+  background-color: rgba(106, 90, 205, 0.6);
+}
+
+.intensity-level[data-level="3"] {
+  background-color: rgba(106, 90, 205, 0.8);
+}
+
+.intensity-level[data-level="4"] {
+  background-color: rgba(106, 90, 205, 1);
+}
+
+/* Scrollbar styling */
+.heatmap-grid-scrollable::-webkit-scrollbar {
+  height: 8px;
+}
+
+.heatmap-grid-scrollable::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.heatmap-grid-scrollable::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.heatmap-grid-scrollable::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
