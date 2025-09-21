@@ -5,6 +5,7 @@ import '@fortawesome/fontawesome-free/css/all.css';
 
 function ChatToggle() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isFullscreen, setIsFullscreen] = useState(false);
   const [messages, setMessages] = useState([
     { sender: 'bot', text: 'Hello 👋! How can I help you today?' }
   ]);
@@ -33,10 +34,19 @@ function ChatToggle() {
       </button>
 
       {/* Chat Sidebar */}
-      <aside className={`chat-sidebar ${isOpen ? 'active' : ''}`}>
+      <aside
+        className={`chat-sidebar ${isOpen ? 'active' : ''} ${isFullscreen ? 'fullscreen' : ''
+          }`}
+      >
         <div className="chat-header">
           <i className="fas fa-robot"></i>
           <span>AI Assistant</span>
+          <button
+            className="fullscreen-btn"
+            onClick={() => setIsFullscreen(!isFullscreen)}
+          >
+            <i className={`fas ${isFullscreen ? 'fa-compress' : 'fa-expand'}`}></i>
+          </button>
         </div>
 
         <div className="chat-window">

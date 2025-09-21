@@ -904,3 +904,118 @@ body {
 .chat-sidebar.active {
     right: 0;
 }
+
+/* Chat Sidebar */
+.chat-sidebar {
+    position: fixed;
+    right: -350px;
+    /* hidden by default */
+    bottom: 90px;
+    width: 320px;
+    height: 500px;
+    background: var(--sidebar-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+    transition: right 0.4s ease;
+    z-index: 1000;
+}
+
+/* When open */
+.chat-sidebar.active {
+    right: 25px;
+    /* slides in */
+}
+
+/* Floating Toggle Button */
+.chat-toggle-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s, background 0.3s;
+    z-index: 1100;
+}
+
+.chat-toggle-btn:hover {
+    background: #7c6ae6;
+    transform: scale(1.05);
+}
+
+/* If open, rotate to “X” */
+.chat-toggle-btn.open {
+    background: var(--accent-red);
+}
+
+/* Sidebar default */
+.chat-sidebar {
+    position: fixed;
+    bottom: 90px;
+    right: 25px;
+    width: 320px;
+    height: 450px;
+    background: var(--sidebar-bg);
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    z-index: 999;
+}
+
+.chat-sidebar.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* ✅ Fullscreen mode */
+.chat-sidebar.fullscreen {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+    border: none;
+    z-index: 1000;
+}
+
+/* Header */
+.chat-header {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.fullscreen-btn {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 18px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.fullscreen-btn:hover {
+    color: var(--primary-color);
+}
