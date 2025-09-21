@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import Header from './components/Header';
 import SearchSection from './components/SearchSection';
 import HomePage from './components/HomePage';
 import SearchResults from './components/SearchResults';
@@ -19,41 +18,6 @@ class AppState {
   }
 
   loadMockData() {
-    this.chatMessages = [
-      {
-        id: 1,
-        type: "ai",
-        message: "Hello! I'm your AI learning assistant. I can help you with explanations, generate practice problems, and guide your revision sessions. What would you like to learn about today?",
-        timestamp: new Date().toISOString()
-      }
-    ];
-
-    this.tasks = [
-      {
-        id: 1,
-        title: "Review Calculus Chapter 3",
-        description: "Complete practice problems 1-15",
-        dueDate: "2025-09-23",
-        priority: "high",
-        completed: false
-      },
-      {
-        id: 2,
-        title: "Prepare for History Quiz",
-        description: "Study World War I timeline",
-        dueDate: "2025-09-24",
-        priority: "medium",
-        completed: false
-      },
-      {
-        id: 3,
-        title: "Python Assignment",
-        description: "Complete sorting algorithms project",
-        dueDate: "2025-09-25",
-        priority: "high",
-        completed: true
-      }
-    ];
 
     this.searchResults = [
       {
@@ -193,7 +157,7 @@ function App() {
   };
 
   const toggleTaskComplete = (taskId) => {
-    setTasks(prev => prev.map(task => 
+    setTasks(prev => prev.map(task =>
       task.id === taskId ? { ...task, completed: !task.completed } : task
     ));
   };
@@ -212,7 +176,6 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
       <SearchSection onSearch={handleSearch} />
 
       <main className="main-content">

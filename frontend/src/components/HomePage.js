@@ -2,26 +2,26 @@ import React from 'react';
 import ChatSection from './ChatSection';
 import Sidebar from './Sidebar';
 
-const HomePage = ({ 
-  chatMessages, 
-  onSendMessage, 
-  tasks, 
-  onToggleTask, 
-  onDeleteTask, 
-  onAddTask, 
-  currentMonth, 
-  onNavigateMonth 
+const HomePage = ({
+  chatMessages,
+  onSendMessage,
+  tasks,
+  onToggleTask,
+  onDeleteTask,
+  onAddTask,
+  currentMonth,
+  onNavigateMonth
 }) => {
   return (
     <div className="home-layout">
       <div className="chat-section">
-        <ChatSection 
+        <ChatSection
           messages={chatMessages}
           onSendMessage={onSendMessage}
         />
       </div>
       <div className="sidebar">
-        <Sidebar 
+        <Sidebar
           tasks={tasks}
           onToggleTask={onToggleTask}
           onDeleteTask={onDeleteTask}
