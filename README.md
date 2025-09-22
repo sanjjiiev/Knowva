@@ -26,7 +26,6 @@ The website is hosted using the **Defang** platform.
 - [Implementation Overview](#implementation-overview)
 - [Prerequisites](#prerequisites)
 - [Steps to Run Locally](#steps-to-run-locally)
-- [License](#license)
 
 ## Features
 
