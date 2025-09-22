@@ -23,6 +23,7 @@ The website is hosted using the **Defang** platform.
   - [Level 2](#level-2)
   - [Level 3](#level-3)
 - [Technologies](#technologies)
+- [Implementation Overview](#implementation-overview)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -52,8 +53,41 @@ The website is hosted using the **Defang** platform.
 ## Technologies
 
 - **Frontend**: React.js
-- **Backend**: Express.js
+- **Backend**: Express.js, Node.js
+- **AI Integration**: OpenAI
 - **Deployment**: Defang
+
+## Implementation Overview
+
+### 1. Core Learning Tools (Explanation, Practice, Revision)
+
+The core learning tools are powered by **OpenAI API** and **LangChart**:
+
+- **Explanation Model**:  
+  OpenAI’s GPT models generate clear, user-specific explanations for a variety of subjects.
+
+- **Practice Model**:  
+  LangChart’s output model generates tailored practice exercises, designed to assess and reinforce user comprehension.
+
+- **Revision Model**:  
+  The AI provides revision resources, including flashcards and quizzes, to help users consolidate their learning.
+
+
+### 2. Search Model for External Learning Resources
+
+The search feature is powered by **OpenAI API**, enabling users to access curated online learning content. The AI intelligently searches and recommends highly relevant articles, tutorials, and videos based on the user's current learning context, enhancing their learning experience with supplementary resources.
+
+
+### 3. Task Management & Calendar Integration
+
+An integrated calendar system is implemented to help users track their learning progress and set reminders for upcoming study tasks. The calendar supports:
+
+- Task creation and editing  
+- Progress tracking  
+- Deadline and milestone management  
+
+This provides users with a structured and efficient way to manage their study schedules.
+
 
 ## Installation
 
