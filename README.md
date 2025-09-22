@@ -16,6 +16,8 @@ You can explore the live demo of the project by clicking the link below:
 
 The website is hosted using the **Defang** platform.
 
+![Project Screenshot](images/sample.png)
+
 
 ## Table of Contents
 
