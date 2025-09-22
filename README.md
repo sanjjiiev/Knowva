@@ -6,6 +6,17 @@ The **Learning Management System (LMS)** is a web-based application designed to 
 
 The app adapts to the user’s learning needs by offering features such as practice problems, revision tools, resource integrations, and more. Whether you are a student, a self-learner, or a professional looking to enhance your skills, LMS offers a tailored approach to learning.
 
+## Live Demo
+
+You can explore the live demo of the project by clicking the link below:
+
+- [Visit Live Demo](https://tj2noyhdmenib-frontend--80.prod1b.defang.dev/)
+
+#### Hosting Information
+
+The website is hosted using the **Defang** platform.
+
+
 ## Table of Contents
 
 - [Features](#features)
