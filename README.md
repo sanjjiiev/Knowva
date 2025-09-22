@@ -1,10 +1,10 @@
-# Learning Management System (LMS)
+# Knowva
 
 ## Overview
 
-The **Learning Management System (LMS)** is a web-based application designed to provide a personalized, interactive, and efficient learning experience. This tool helps users progress through their learning journey with different levels of assistance, ranging from basic explanations to advanced integrations with productivity tools. 
+The **Knowva** is a web-based application designed to provide a personalized, interactive, and efficient learning experience. This tool helps users progress through their learning journey with different levels of assistance, ranging from basic explanations to advanced integrations with productivity tools. 
 
-The app adapts to the user’s learning needs by offering features such as practice problems, revision tools, resource integrations, and more. Whether you are a student, a self-learner, or a professional looking to enhance your skills, LMS offers a tailored approach to learning.
+The app adapts to the user’s learning needs by offering features such as practice problems, revision tools, resource integrations, and more. Whether you are a student, a self-learner, or a professional looking to enhance your skills, Knowva offers a tailored approach to learning.
 
 ## Live Demo
 
