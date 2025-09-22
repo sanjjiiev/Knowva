@@ -108,7 +108,11 @@ To enable AI features, you will need an **OpenAI API key**:
 3. Add your API key to the environment variables (see `.env.example`)
 
 ### Environment Variables
-
+To make an .env file
+```bash
+cp .env.example .env
+```
+Once you have the .env file set up, make sure to populate it with the required API keys and credentials.
 
 
 ### Steps to Run Locally
