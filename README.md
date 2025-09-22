@@ -36,12 +36,18 @@ The website is hosted using the **Defang** platform.
 - **Practice Problems**: Engage users with practice problems to test their knowledge.
 - **Revision Tools**: Assist in revising previously learned material.
 
+  ![Level One Screenshot](images/L1.png)
+
 ### Level 2 - Resource Integration
 - **Online Resources**: Integrations to help users discover and access learning materials from external sources such as websites, articles, and videos.
+
+  ![Level Two Screenshot](images/L2.png)
 
 ### Level 3 - Advanced Features
 - **Calendar**: Track progress and get reminders for upcoming tasks and exams.
 - **Complete Learning Assistant**: A fully integrated learning assistant that recommends actions and provides motivational support.
+
+  ![Level Three Screenshot](images/L3.png)
 
 ## Technologies
 
