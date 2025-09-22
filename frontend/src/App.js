@@ -32,7 +32,7 @@ function App() {
     setCurrentPage('search');
 
     try {
-      const { data } = await axios.post('http://localhost:5000/search', { query });
+      const { data } = await axios.post('https://tj2noyhdmenib-backend--5000.prod1b.defang.dev/search', { query });
       setSearchResults(data.results || []);
     } catch (err) {
       console.error('Search error:', err);

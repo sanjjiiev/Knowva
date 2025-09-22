@@ -8,7 +8,16 @@ const { RunnableSequence } = require("@langchain/core/runnables");
 require("dotenv").config();
 
 const app = express();
-app.use(cors());
+
+// CORS configuration
+app.use(cors({
+  origin: [
+    "http://localhost:3000",
+    "https://tj2noyhdmenib-frontend--80.prod1b.defang.dev"
+  ],
+  credentials: true
+}));
+
 app.use(bodyParser.json());
 
 // OpenAI model
@@ -116,6 +125,10 @@ app.post("/search", async (req, res) => {
   }
 });
 
+// Health check endpoint
+app.get("/health", (req, res) => {
+  res.json({ status: "OK", message: "Server is running" });
+});
 
 app.listen(5000, () => {
   console.log("AI server running on http://localhost:5000");

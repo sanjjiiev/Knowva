@@ -34,11 +34,15 @@ const ChatSection = () => {
     try {
       setIsTyping(true);
 
-      const response = await fetch("http://localhost:5000/chat", {
+      const response = await fetch("https://tj2noyhdmenib-backend--5000.prod1b.defang.dev/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message })
       });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
       const data = await response.json();
 
@@ -48,8 +52,8 @@ const ChatSection = () => {
       handleSendMessage(`Revision:\n${data.revision}`, "ai");
 
     } catch (error) {
-      console.error(error);
-      handleSendMessage("Error fetching AI response", "ai");
+      console.error("API Error:", error);
+      handleSendMessage("Sorry, I'm having trouble connecting to the AI service. Please try again later.", "ai");
     } finally {
       setIsTyping(false);
     }
