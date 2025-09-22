@@ -62,13 +62,9 @@ The website is hosted using the **Defang** platform.
 
 The core learning tools are powered by **OpenAI API** and **LangChart**:
 
-- **Explanation Model**:  
+- **Explanation Model** , **Practice Model** , **Revision Model**:  
   OpenAI’s GPT models generate clear, user-specific explanations for a variety of subjects.
-
-- **Practice Model**:  
-  LangChart’s output model generates tailored practice exercises, designed to assess and reinforce user comprehension.
-
-- **Revision Model**:  
+  LangChart’s output model generates tailored practice exercises, designed to assess and reinforce user comprehension. 
   The AI provides revision resources, including flashcards and quizzes, to help users consolidate their learning.
 
 
