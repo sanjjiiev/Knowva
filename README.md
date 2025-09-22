@@ -30,22 +30,22 @@ The website is hosted using the **Defang** platform.
 
 ## Features
 
-### Level 1 - Basic Learning Features
-- **Chat Interface**: A basic interactive chat interface that helps users ask questions and get personalized responses.
-- **Explanations**: Provide simple, clear, and concise explanations on various topics.
-- **Practice Problems**: Engage users with practice problems to test their knowledge.
-- **Revision Tools**: Assist in revising previously learned material.
+### Level 1 - Core Learning Tools
+- **Interactive Chat Interface**: A user-friendly platform designed to facilitate real-time engagement, allowing users to ask questions and receive tailored responses.
+- **Clear Explanations**: Offering succinct, easily understandable explanations on a broad range of topics to ensure users can grasp essential concepts with clarity.
+- **Practice Exercises**: Providing a series of practice problems to assess comprehension and reinforce learning through hands-on application.
+- **Revision Assistance**: Tools and resources to support the revision of previously covered material, ensuring knowledge retention and mastery.
 
   ![Level One Screenshot](images/L1.png)
 
 ### Level 2 - Resource Integration
-- **Online Resources**: Integrations to help users discover and access learning materials from external sources such as websites, articles, and videos.
+- **External Learning Integrations**: Seamless access to a curated selection of online resources, including websites, articles, and videos, to enhance the learning experience.
 
   ![Level Two Screenshot](images/L2.png)
 
-### Level 3 - Advanced Features
-- **Calendar**: Track progress and get reminders for upcoming tasks and exams.
-- **Complete Learning Assistant**: A fully integrated learning assistant that recommends actions and provides motivational support.
+### Level 3 - Advanced Learning Features
+- **Progress Tracker & Calendar**: Monitor progress with personalized reminders for upcoming tasks, exams, and milestones, ensuring timely preparation and organization.
+- **Comprehensive Learning Assistant**: An all-encompassing, AI-powered assistant that offers tailored recommendations, adaptive learning paths, and ongoing motivational support to guide users toward their goals.
 
   ![Level Three Screenshot](images/L3.png)
 
