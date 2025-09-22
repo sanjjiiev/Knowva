@@ -25,8 +25,7 @@ The website is hosted using the **Defang** platform.
 - [Technologies](#technologies)
 - [Implementation Overview](#implementation-overview)
 - [Prerequisites](#prerequisites)
-- [Usage](#usage)
-- [Contributing](#contributing)
+- [Steps to Run Locally](#steps-to-run-locally)
 - [License](#license)
 
 ## Features
@@ -115,5 +114,50 @@ cp .env.example .env
 Once you have the .env file set up, make sure to populate it with the required API keys and credentials.
 
 
-### Steps to Run Locally
+## Steps to Run Locally
+Follow these steps to install the required dependencies for the project.
 
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/sanjjiiev/Knowva.git
+   ```
+**Backend Setup**:
+1. Navigate to the backend directory:
+    ```bash
+    cd backend
+    ```
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+3. Ensure you have a .env file in the backend directory:
+If not, create one or copy from an example:
+   ```bash
+   cp .env.example .env
+   ```
+**Frontend Setup**:
+1. Navigate to the frontend directory:
+    ```bash
+    cd ../frontend
+    ```
+2. Install dependencies:
+    ```bash
+    npm install
+    ```
+3. Install Axios:
+    ```bash
+    npm install axios
+    ```
+**Running the Project**:
+Make sure both the backend and frontend servers are running:
+
+**Start Backend**:
+  ```bash
+  cd backend
+  npm start
+  ```
+**Start Frontend**:
+```bash
+cd frontend
+npm start
+```
