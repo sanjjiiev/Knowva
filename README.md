@@ -157,3 +157,5 @@ Make sure both the backend and frontend servers are running:
 cd frontend
 npm start
 ```
+
+In this project, we leveraged OpenAI’s API to develop an intelligent learning management system with multiple functionalities. Using LangChart, we created three distinct AI-driven output models—Explanation, Practice, and Revision—to facilitate personalized learning experiences. Additionally, we integrated a search model powered by OpenAI to provide online references and learning resources dynamically. To enhance productivity and organization, we implemented a calendar system with task management capabilities, allowing users to add, track, and complete tasks efficiently. Overall, the system combines AI-driven learning support with practical organizational tools, offering an interactive and comprehensive platform for effective learning and study management.
