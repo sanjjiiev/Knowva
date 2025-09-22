@@ -24,7 +24,7 @@ The website is hosted using the **Defang** platform.
   - [Level 3](#level-3)
 - [Technologies](#technologies)
 - [Implementation Overview](#implementation-overview)
-- [Installation](#installation)
+- [Prerequisites](#prerequisites)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
@@ -88,13 +88,28 @@ An integrated calendar system is implemented to help users track their learning 
 
 This provides users with a structured and efficient way to manage their study schedules.
 
+## Prerequisites
 
-## Installation
+Before running this project locally, ensure you have the following installed:
 
-### Prerequisites
+### System Requirements
 
-1. **Node.js**: Ensure that you have Node.js installed on your local machine.
-2. **API Keys**: Obtain necessary API keys.
+- **Node.js** 
+  [Download Node.js](https://nodejs.org/)
+  
+- **Git** (for cloning the repository)  [Download Git](https://git-scm.com/)
+
+### API Key Requirement
+
+To enable AI features, you will need an **OpenAI API key**:
+
+1. Create an account at [OpenAI](https://platform.openai.com/signup)
+2. Generate your API key from the [OpenAI API Keys Dashboard](https://platform.openai.com/account/api-keys)
+3. Add your API key to the environment variables (see `.env.example`)
+
+### Environment Variables
+
+
 
 ### Steps to Run Locally
 
